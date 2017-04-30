@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/dedgar/cloud'
+let g:netrw_dirhist_2='/home/dedgar/git/openshift-tools/docker/oso-security-scanning/src'
+let g:netrw_dirhist_3='/home/dedgar/git/openshift-tools/docker/oso-security-scanning'
+let g:netrw_dirhist_4='/home/dedgar/git/openshift-tools/docker'
+let g:netrw_dirhist_5='/home/dedgar/git/openshift-tools'
+let g:netrw_dirhist_6='/home/dedgar/git/v3simplebottle-db/templates'
