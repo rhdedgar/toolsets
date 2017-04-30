@@ -1,0 +1,40 @@
+
+alias gr='grep -ir'
+alias grun='go run'
+alias gb='go build'
+
+export GREP_COLORS='0;31'
+
+alias gitup='git co master && git fetch --all && git rebase upstream/master && git push -u origin'
+alias gitup2='git co prod && git fetch --all && git rebase upstream/prod && git push -u origin'
+alias gitsoft='git co prod && git fetch --all && git rebase upstream/prod'
+
+alias gg='git grep --color=auto'
+
+# git prompt
+if [ -f ~/.git-prompt.sh ]
+then
+    source ~/.git-prompt.sh
+
+    export GIT_PS1_SHOWDIRTYSTATE=true
+    export GIT_PS1_SHOWUNTRACKEDFILES=true
+    export GIT_PS1_SHOWSTASHSTATE=true
+    export GIT_PS1_SHOWUPSTREAM="auto"
+
+    export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+    export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+fi
+
+# Eternal bash history.
+# ---------------------
+# Undocumented feature which sets the size to "unlimited".
+# http://stackoverflow.com/questions/9457233/unlimited-bash-history
+export HISTFILESIZE=
+export HISTSIZE=
+export HISTTIMEFORMAT="[%F %T] "
+# Change the file location because certain bash sessions truncate .bash_history file upon close.
+# http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
+export HISTFILE=~/.bash_eternal_history
+# Force prompt to write history after every command.
+# http://superuser.com/questions/20900/bash-history-loss
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
