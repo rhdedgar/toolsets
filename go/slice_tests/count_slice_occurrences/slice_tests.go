@@ -5,6 +5,7 @@ import (
     "math/rand"
     "time"
     "strings"
+    "strconv"
 )
 // for i in random, append a random number to that random-length slice
 
@@ -36,28 +37,31 @@ func main() {
         orig_seed++
     }
 
-/*    var reverse_slice int[]
-
-    for i := 0; i < len(rand_slice); i++ {
-        if i == 
-        rand_slice = append(rand_slice, random_int(0, 50, orig_seed))
-        orig_seed++
-    }*/
-
     fmt.Println(rand_slice)
 
-//    string_slice := make([]string, len(rand_slice))
+    stringver := strings.Trim(strings.Join(strings.Fields(fmt.Sprint(rand_slice)), ","), "[]")
+    fmt.Println(stringver)
 
-/*    var string_slice []string
+/*    var uniqmap map[int]int
+    uniqmap = make(map[int]int)
 
-    for i := 0; i < len(rand_slice); i++ {
-        string_slice = append(string_slice, string(rand_slice[i]))
-    }*/
+    for i := range rand_slice {
+        if uniqmap[i] == 0 {
+            uniqmap[i] = strings.Count(stringver, strconv.FormatInt(int64(i), 10))
+        }
+    }
+*/
 
-    somstring := strings.Trim(strings.Join(strings.Fields(fmt.Sprint(rand_slice)), ","), "[]")
-    fmt.Println(somstring)
+    var uniqmap map[string]int
+    uniqmap = make(map[string]int)
 
-//    altogether := strings.Join(string_slice, ",")
-//    fmt.Println(string_slice)
-//    fmt.Println(altogether)
+
+    for i := strings.Split(stringver, ",") {
+        if _, ok := m[i] {
+            strings.Count(stringver, i)
+        }
+    }
+
+    fmt.Println(uniqmap)
+
 }

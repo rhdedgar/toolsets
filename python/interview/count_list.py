@@ -23,6 +23,7 @@ def main():
     """ Main function, print how many times the most common number appears """
 
     my_list = random_list()
+    print(my_list)
     print(Counter(my_list).most_common(1))
 
 
