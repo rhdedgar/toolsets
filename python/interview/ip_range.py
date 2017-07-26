@@ -2,11 +2,11 @@
 
 from __future__ import print_function
 
-def random_list():
-    """ Make random-length list of random numbers
+def rule_list():
+    """ Make list of iptables rules for the 10.0.0.0/16 subnet
 
     Returns:
-        a list of ints
+        a list of strings
     """
 
     ip_list = []
@@ -15,15 +15,16 @@ def random_list():
         for j in range(0, 256):
 #            print('10.0.' + str(i) + '.' + str(j))
             ip_list.append('-A oo-udp-limit -s 10.0.' + str(i) + '.' + str(j) +\
-            ' -m limit --limit 30/s -m comment --comment "oo_udp_limit_id_%s_%s" -j RETURN' % (i, j))
+            ' -m limit --limit 30/s -m comment --comment "oo_udp_limit_id_%s_%s" -j RETURN'\
+            % (i, j))
 
     return ip_list
 
 
 def main():
-    """ Main function, print how many times the most common number appears """
+    """ Main function, print total number of rules generated """
 
-    my_list = random_list()
+    my_list = rule_list()
     print('total number of rules: ', len(my_list))
 
     for i in my_list:
