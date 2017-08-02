@@ -25,7 +25,7 @@ def main():
     """ Main function, print total number of rules generated """
 
     my_list = rule_list()
-    print('total number of rules: ', len(my_list))
+    print('total number of rules:', len(my_list))
 
     for i in my_list:
         print(i)
