@@ -1,15 +1,39 @@
 
+alias grep="grep --color=auto"
 alias gr='grep -ir'
 alias grun='go run'
 alias gb='go build'
 
-export GREP_COLORS='0;31'
-
+# git specifics
 alias gitup='git co master && git fetch --all && git rebase upstream/master && git push -u origin'
 alias gitup2='git co prod && git fetch --all && git rebase upstream/prod && git push -u origin'
 alias gitsoft='git co prod && git fetch --all && git rebase upstream/prod'
+alias gitaddnew='for item in $(git diff --name-only); do git add $item; done'
+alias gpa='gpa_startbranch=$(git describe --contains --all HEAD) ; git fetch --all ; for x in $(git branch -vv | grep "\origin" | tr -d "*" | awk '\''{print $1}'\''); do git checkout $x && git pull --ff-only ; done ; git checkout $gpa_startbranch'
+alias gt='git st'
+alias gd='git diff origin/master'
+alias gpo='mybranch=$(git rev-parse --abbrev-ref HEAD) && git push origin "$mybranch":"$mybranch"'
+alias gitadd='for item in $(git diff --name-only); do git add $item; done'
 
 alias gg='git grep --color=auto'
+alias note='cd ~/notes'
+alias gnomefix='killall -9 gnome-shell'
+alias ks='ls'
+
+alias opo='oc get pods'
+alias pop='oc get pods'
+alias ocge="oc get events --sort-by='.lastTimestamp'"
+
+export GREP_COLORS='0;31'
+
+cm() {
+  git commit -m "$1"
+}
+
+tldr() {
+  sed -e '/^#/d; /^$/d' "$1"
+}
+
 
 # git prompt
 if [ -f ~/.git-prompt.sh ]
